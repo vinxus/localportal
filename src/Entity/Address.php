@@ -41,6 +41,11 @@ class Address
      */
     private $townCity;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Trade", inversedBy="address")
+     */
+    private $trade;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -102,6 +107,18 @@ class Address
     public function setTownCity(string $townCity): self
     {
         $this->townCity = $townCity;
+
+        return $this;
+    }
+
+    public function getTrade(): ?Trade
+    {
+        return $this->trade;
+    }
+
+    public function setTrade(?Trade $trade): self
+    {
+        $this->trade = $trade;
 
         return $this;
     }
